@@ -3,9 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 export default async function PendingPage() {
-  const response = await fetch(
-    "http://localhost:3000/api/get-pending-achievements"
-  );
+  const response = await fetch("/api/get-pending-achievements");
   if (!response.ok) {
     console.error(response);
     return (
