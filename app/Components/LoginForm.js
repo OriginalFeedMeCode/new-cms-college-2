@@ -36,7 +36,7 @@ const LoginForm = () => {
   };
 
   const login = async (email, password) => {
-    const response = await fetch("/api/login", {
+    const response = await fetch(`${process.env.BASEURL}/api/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

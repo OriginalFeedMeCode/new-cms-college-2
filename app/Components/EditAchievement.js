@@ -177,13 +177,16 @@ export default function EditAchievementForm({ data }) {
       media: JSON.stringify(media),
     };
     try {
-      const response = await fetch("/api/update-achievement", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(reqData),
-      });
+      const response = await fetch(
+        `${process.env.BASEURL}/api/update-achievement`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(reqData),
+        }
+      );
       const resdata = await response.json();
       if (!response.ok) {
         toast.error(resdata.message);

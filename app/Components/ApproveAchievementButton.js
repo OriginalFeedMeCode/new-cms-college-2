@@ -15,13 +15,16 @@ export default function ApproveAchievementButton({ postId, status }) {
 
   async function approveAchievementButton() {
     try {
-      const response = await fetch("/api/update-achievement-status", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id: postId, status, approvedBy: userId }),
-      });
+      const response = await fetch(
+        `${process.env.BASEURL}/api/update-achievement-status`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id: postId, status, approvedBy: userId }),
+        }
+      );
       if (!response.ok) {
         const errorData = await response.json();
         toast.error(errorData.message || "Failed to delete user");

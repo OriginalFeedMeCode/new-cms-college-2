@@ -8,7 +8,7 @@ const Header = ({ session }) => {
   const myName = session?.user?.name;
   async function logoutUser() {
     try {
-      const response = await fetch("/api/logout", {
+      const response = await fetch(`${process.env.BASEURL}/api/logout`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

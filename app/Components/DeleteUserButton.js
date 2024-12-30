@@ -16,7 +16,7 @@ export default function DeleteUserButton({ userId, name }) {
       return;
     }
     try {
-      const response = await fetch("/api/delete-user", {
+      const response = await fetch(`${process.env.BASEURL}/api/delete-user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

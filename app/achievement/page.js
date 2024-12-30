@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 
 export default async function AllAcheivements() {
-  const response = await fetch("/api/get-achievements");
+  const response = await fetch(`${process.env.BASEURL}/api/get-achievements`);
   if (!response.ok) {
     return (
       <div className="">
