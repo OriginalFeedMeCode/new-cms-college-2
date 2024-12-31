@@ -60,7 +60,7 @@ export default function AddUserForm() {
     }
     const data = {
       name: formData.name,
-      email: formData.email,
+      email: formData.email.toLowerCase(),
       role: formData.role,
       password: btoa(formData.password),
     };
