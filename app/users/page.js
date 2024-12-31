@@ -2,7 +2,10 @@ import DeleteUserButton from "@Components/DeleteUserButton";
 import React from "react";
 
 export default async function UsersPage() {
-  const response = await fetch(`${process.env.BASEURL}/api/users`);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/users`,
+    { cache: "no-store" }
+  );
   if (!response.ok) {
     console.error(response);
   }

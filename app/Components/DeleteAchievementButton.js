@@ -14,7 +14,7 @@ export default function DeleteAchievementButton({ postId, status }) {
   async function deleteAchievementButton() {
     try {
       const response = await fetch(
-        `${process.env.BASEURL}/api/update-achievement-status`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/update-achievement-status`,
         {
           method: "POST",
           headers: {

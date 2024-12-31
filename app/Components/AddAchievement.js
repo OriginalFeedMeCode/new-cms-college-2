@@ -168,7 +168,7 @@ export default function AddAchievementForm() {
     };
     try {
       const response = await fetch(
-        `${process.env.BASEURL}/api/add-achievement`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/add-achievement`,
         {
           method: "POST",
           headers: {

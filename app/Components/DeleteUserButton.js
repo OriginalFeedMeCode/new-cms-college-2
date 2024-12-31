@@ -16,13 +16,16 @@ export default function DeleteUserButton({ userId, name }) {
       return;
     }
     try {
-      const response = await fetch(`${process.env.BASEURL}/api/delete-user`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id: userId }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/delete-user`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id: userId }),
+        }
+      );
       if (!response.ok) {
         const errorData = await response.json();
         toast.error(errorData.message || "Failed to delete user");

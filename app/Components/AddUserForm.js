@@ -65,13 +65,16 @@ export default function AddUserForm() {
       password: btoa(formData.password),
     };
 
-    const response = await fetch(`${process.env.BASEURL}/api/add-user`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/add-user`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
     const resdata = await response.json();
     if (!response.ok) {
       toast.error(resdata.message);

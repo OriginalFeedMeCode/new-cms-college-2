@@ -4,7 +4,8 @@ import React from "react";
 
 export default async function PendingPage() {
   const response = await fetch(
-    `${process.env.BASEURL}/api/get-pending-achievements`
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/get-pending-achievements`,
+    { cache: "no-store" }
   );
   if (!response.ok) {
     console.error(response);

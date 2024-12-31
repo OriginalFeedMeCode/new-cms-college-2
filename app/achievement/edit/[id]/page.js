@@ -5,7 +5,7 @@ import React from "react";
 export default async function EditAchievementPage({ params }) {
   const { id } = await params;
   const response = await fetch(
-    `${process.env.BASEURL}/api/get-achievement-by-id`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/get-achievement-by-id`,
     {
       method: "POST",
       headers: {

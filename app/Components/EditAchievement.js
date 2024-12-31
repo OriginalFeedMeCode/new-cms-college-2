@@ -178,7 +178,7 @@ export default function EditAchievementForm({ data }) {
     };
     try {
       const response = await fetch(
-        `${process.env.BASEURL}/api/update-achievement`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/update-achievement`,
         {
           method: "POST",
           headers: {

@@ -2,13 +2,16 @@ import { signIn } from "next-auth/react";
 
 export async function loginUser(email, password) {
   try {
-    const response = await fetch(`${process.env.BASEURL}/api/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/login`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      }
+    );
     const data = await response.json();
     if (!response.ok) {
       return { status: false, message: data.message || "Login failed" };

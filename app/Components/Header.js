@@ -8,13 +8,16 @@ const Header = ({ session }) => {
   const myName = session?.user?.name;
   async function logoutUser() {
     try {
-      const response = await fetch(`${process.env.BASEURL}/api/logout`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ loginId }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/logout`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ loginId }),
+        }
+      );
       const data = await response.json();
       if (response.ok) {
         toast.success("Log out Success");

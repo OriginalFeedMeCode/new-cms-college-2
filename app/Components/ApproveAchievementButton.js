@@ -16,7 +16,7 @@ export default function ApproveAchievementButton({ postId, status }) {
   async function approveAchievementButton() {
     try {
       const response = await fetch(
-        `${process.env.BASEURL}/api/update-achievement-status`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/update-achievement-status`,
         {
           method: "POST",
           headers: {
