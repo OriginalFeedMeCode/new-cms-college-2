@@ -22,6 +22,8 @@ export default function EditAchievementForm({ data }) {
     name: "",
   });
 
+  const [confirm, setConfirm] = useState(false);
+
   function getPreviewUrl(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -130,6 +132,11 @@ export default function EditAchievementForm({ data }) {
       setLoading(false);
       return;
     }
+
+    setConfirm(true);
+  }
+
+  async function confirmEdit() {
     let mediaData = [];
 
     for (const fileData of mediaFiles) {
@@ -176,6 +183,7 @@ export default function EditAchievementForm({ data }) {
       mainMediaImage: formData.mainMediaImage,
       media: JSON.stringify(media),
     };
+
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/update-achievement`,
@@ -204,6 +212,35 @@ export default function EditAchievementForm({ data }) {
 
   return (
     <div>
+      {confirm && (
+        <div className="w-[100svw] h-[100svh] z-[9999] bg-white/80 backdrop-blur fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center">
+          <div className="w-full md:w-max px-4 md:px-12 py-6 bg-white border md:rounded-xl">
+            <h3 className="text-xl md:text-2xl font-medium text-red-500 mb-4">
+              Do you want to apply Changes ?
+            </h3>
+            <p className="mb-4">Confirm updation.</p>
+            <div className="flex items-center gap-5">
+              <button
+                onClick={() => {
+                  confirmEdit();
+                }}
+                className="btn btn-success !text-white"
+              >
+                Update
+              </button>
+              <button
+                onClick={() => {
+                  setConfirm(false);
+                  setLoading(false);
+                }}
+                className="btn btn-error"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <form className="" onSubmit={submitForm}>
         <div className="mb-2">
           <label

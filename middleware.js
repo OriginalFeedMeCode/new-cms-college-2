@@ -3,10 +3,10 @@ export const config = {
   matcher: [
     "/dashboard",
     "/users",
-    "/users/add-user",
+    "/users/:path*",
     "/approvals",
+    "/approvals/:path*",
     "/achievement",
-    "/achievement/add-achievement",
-    "/achievement/edit",
+    "/achievement/:path*",
   ],
 };
