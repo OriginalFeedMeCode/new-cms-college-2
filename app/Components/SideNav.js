@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, ClockArrowDown } from "lucide-react";
+import { ChevronDown, ClockArrowDown, Newspaper } from "lucide-react";
 
 import { Medal, User } from "lucide-react";
 
@@ -22,8 +22,14 @@ const SIDENAV_ITEMS = [
     title: "Pending Approvals",
     path: "/approvals",
     icon: <ClockArrowDown size={24} />,
+    submenu: true,
+    subMenuItems: [
+      { title: "Achievements", path: "/approvals" },
+      { title: "News", path: "/approvals/news-approvals" },
+    ],
     rights: true,
   },
+
   {
     title: "Acheivements",
     path: "/achievement",
@@ -32,6 +38,17 @@ const SIDENAV_ITEMS = [
     subMenuItems: [
       { title: "All Acheivement", path: "/achievement" },
       { title: "Add Acheivement", path: "/achievement/add-achievement" },
+    ],
+    rights: false,
+  },
+  {
+    title: "News Articles",
+    path: "/news",
+    icon: <Newspaper size={24} />,
+    submenu: true,
+    subMenuItems: [
+      { title: "All News", path: "/news" },
+      { title: "Add News", path: "/news/add-news" },
     ],
     rights: false,
   },

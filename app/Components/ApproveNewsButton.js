@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
-export default function ApproveAchievementButton({ postId, status }) {
+export default function ApproveNewsButton({ postId, status }) {
   const router = useRouter();
   const [popup, setPopUp] = useState(false);
   const { data: session } = useSession();
@@ -13,10 +13,10 @@ export default function ApproveAchievementButton({ postId, status }) {
   const roleRights = ["DEVELOPER", "OWNER"];
   const rights = roleRights.includes(role);
 
-  async function approveAchievementButton() {
+  async function approveNewsButton() {
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/update-achievement-status`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/update-news-status`,
         {
           method: "POST",
           headers: {
@@ -32,7 +32,7 @@ export default function ApproveAchievementButton({ postId, status }) {
       const result = await response.json();
       toast.success(result.message);
       setPopUp(false);
-      router.push("/aprovals");
+      router.push("/arrovals/news-approvals");
     } catch (error) {
       console.error("Error deleting user:", error);
       return {
@@ -48,13 +48,13 @@ export default function ApproveAchievementButton({ postId, status }) {
         <div className="w-[100svw] h-[100svh] z-[9999] bg-white/80 backdrop-blur fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center">
           <div className="w-full md:w-max px-4 md:px-12 py-6 bg-white border md:rounded-xl">
             <h3 className="text-xl md:text-2xl font-medium text-red-500 mb-4">
-              Do you want to Approve this Story ?
+              Do you want to Approve this NEWS ?
             </h3>
             <p className="mb-4">Confirm Approve.</p>
             <div className="flex items-center gap-5">
               <button
                 onClick={() => {
-                  approveAchievementButton();
+                  approveNewsButton();
                 }}
                 className="btn btn-success !text-white"
               >
@@ -81,7 +81,7 @@ export default function ApproveAchievementButton({ postId, status }) {
             status === "D" ? "btn-disabled !text-black" : "btn-success"
           }`}
         >
-          Approve this Achievement
+          Approve this News
         </button>
       )}
     </>

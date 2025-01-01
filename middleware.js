@@ -8,5 +8,7 @@ export const config = {
     "/approvals/:path*",
     "/achievement",
     "/achievement/:path*",
+    "/news/:path*",
+    "/news",
   ],
 };
