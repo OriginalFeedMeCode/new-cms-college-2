@@ -33,6 +33,7 @@ export default function VideoElement({ img, video }) {
               width={300}
               height={300}
               alt={img}
+              priority
               src={img}
               className="rounded-xl border-2 w-full h-auto"
             />
