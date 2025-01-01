@@ -17,7 +17,7 @@ export default function SessionedPagesLayout({ children }) {
         <div
           className={`${
             session
-              ? "flex-1 max-h-[calc(100svh-82px)] py-6 px-2 md:px-4 overflow-y-auto"
+              ? "flex-1 max-h-[calc(100svh-82px)] py-6 px-2 md:px-4 overflow-y-auto "
               : "w-full"
           }`}
         >

@@ -53,6 +53,7 @@ export default async function AllAcheivements() {
                 <td>{index + 1}</td>
                 <td>
                   <Image
+                    priority
                     src={item.mmi}
                     width={100}
                     height={100}
@@ -60,7 +61,7 @@ export default async function AllAcheivements() {
                     className="h-auto rounded-xl"
                   />
                 </td>
-                <td>
+                <td className="md:max-w-96">
                   <div>
                     <h2 className=" text-xl font-medium mb-2">{item.name}</h2>
                     <h2 className="font-medium">{item.title}</h2>
@@ -70,7 +71,7 @@ export default async function AllAcheivements() {
                 <td>
                   {item.country} / {getFinalStatus(item.status)}
                 </td>
-                <td className="flex items-center gap-4">
+                <td className="grid grid-cols-1 md:grid-cols-2 items-center gap-4">
                   <Link
                     href={`/achievement/edit/${item.id}`}
                     className={`${
