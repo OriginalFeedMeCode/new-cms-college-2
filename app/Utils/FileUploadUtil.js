@@ -3,17 +3,17 @@ import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import { v4 as uuidv4 } from "uuid";
 
 const auth = {
-  region: "us-east-1",
+  region: process.env.AWS_BUCKET_REGION,
   credentials: {
-    accessKeyId: "AKIAYZMHEXSYIO5JNKIT",
-    secretAccessKey: "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",
+    accessKeyId: process.env.MY_AWS_ACCESS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   },
 };
 
 async function uploadFileToS3(file, fileName) {
   const buffer = Buffer.from(await file.arrayBuffer());
   const params = {
-    Bucket: "ischat",
+    Bucket: process.env.AWS_BUCKET_NAME,
     Key: `${fileName}`,
     Body: buffer,
     ContentType: file.type,
@@ -23,7 +23,7 @@ async function uploadFileToS3(file, fileName) {
   try {
     const s3Client = new S3Client(auth);
     await s3Client.send(command);
-    const url = `https://ischat.s3.amazonaws.com/${fileName}`;
+    const url = `https://${process.env.AWS_BUCKET_NAME}.s3.amazonaws.com/${fileName}`;
     return {
       status: "success",
       message: "File has been uploaded.",
@@ -45,7 +45,7 @@ export async function uploadFileMain(formData) {
     const uniqueFileName = `${Date.now()}_${uuidv4()}`;
     await uploadFileToS3(file, uniqueFileName);
 
-    const url = `https://ischat.s3.amazonaws.com/${uniqueFileName}`;
+    const url = `https://${process.env.AWS_BUCKET_NAME}.s3.amazonaws.com/${uniqueFileName}`;
 
     const response = {
       status: "success",
