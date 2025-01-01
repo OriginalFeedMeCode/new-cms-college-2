@@ -69,9 +69,10 @@ export default async function EditAchievementPage({ params, searchParams }) {
         </Link>
       </div>
       {tab === "p" && (
-        <div className="w-full md:w-[270px] md:h-[480px] md:border md:rounded-xl md:mx-auto p-2">
+        <div className="w-full md:w-[270px] md:max-h-[480px] overflow-y-auto md:border md:rounded-xl md:mx-auto p-2">
           {achievement.MAIN_MEDIA_TYPE === "I" ? (
             <Image
+              priority
               src={achievement.MAIN_MEDIA_IMAGE}
               width={400}
               height={400}
@@ -89,7 +90,9 @@ export default async function EditAchievementPage({ params, searchParams }) {
               {achievement.NAME}
             </h2>
             <h2 className="font-semibold text-lg mb-2">{achievement.TITLE}</h2>
-            <h3 className="mb-4 font-medium">{achievement.SUBTITLE}</h3>
+            {achievement.SUBTITLE !== "N/A" && (
+              <h3 className="mb-4 font-medium">{achievement.SUBTITLE}</h3>
+            )}
             <p className="text-sm mb-4">{achievement.DESCRIPTION}</p>
             <button className="btn ">Read More</button>
           </div>
@@ -100,6 +103,7 @@ export default async function EditAchievementPage({ params, searchParams }) {
           <div className="w-4/5 mx-auto grid grid-cols-2 gap-5 items-center">
             {achievement.MAIN_MEDIA_TYPE === "I" ? (
               <Image
+                priority
                 src={achievement.MAIN_MEDIA_IMAGE}
                 width={400}
                 height={400}
@@ -117,7 +121,9 @@ export default async function EditAchievementPage({ params, searchParams }) {
                 {achievement.NAME}
               </h2>
               <h2 className="text-xl font-medium">{achievement.TITLE}</h2>
-              <h3 className="mb-4">{achievement.SUBTITLE}</h3>
+              {achievement.SUBTITLE !== "N/A" && (
+                <h3 className="mb-4 font-medium">{achievement.SUBTITLE}</h3>
+              )}
               <p className="text-sm mb-4">{achievement.DESCRIPTION}</p>
               <button className="btn ">Read More</button>
             </div>
@@ -129,6 +135,7 @@ export default async function EditAchievementPage({ params, searchParams }) {
           <div className="grid grid-cols-2 gap-5 items-center mb-6">
             {achievement.MAIN_MEDIA_TYPE === "I" ? (
               <Image
+                priority
                 src={achievement.MAIN_MEDIA_IMAGE}
                 width={400}
                 height={400}
@@ -146,7 +153,9 @@ export default async function EditAchievementPage({ params, searchParams }) {
                 {achievement.NAME}
               </h2>
               <h2 className="text-xl font-medium">{achievement.TITLE}</h2>
-              <h3 className="mb-4">{achievement.SUBTITLE}</h3>
+              {achievement.SUBTITLE !== "N/A" && (
+                <h3 className="mb-4 font-medium">{achievement.SUBTITLE}</h3>
+              )}
               <Gallery mediaFiles={media.media} />
               <p className="text-sm mb-4">{achievement.DESCRIPTION}</p>
             </div>

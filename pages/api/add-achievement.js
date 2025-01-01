@@ -11,7 +11,7 @@ export default async (req, res) => {
     description,
     name,
     media,
-    subtitle,
+    subtitle = "N/A",
     country,
     content,
     locale = "en",

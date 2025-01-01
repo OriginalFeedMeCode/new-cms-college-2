@@ -22,3 +22,7 @@ select {
   text-indent: 1px;
   text-overflow: "";
 }
+
+* {
+  scrollbar-width: thin;
+}

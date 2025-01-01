@@ -106,10 +106,6 @@ export default function AddAchievementForm() {
       toast.error("Name is required.");
       setLoading(false);
       return;
-    } else if (!formData.subtitle) {
-      toast.error("Subtitle is required.");
-      setLoading(false);
-      return;
     } else if (!formData.country) {
       toast.error("Country is required.");
       setLoading(false);
@@ -157,7 +153,7 @@ export default function AddAchievementForm() {
       title: formData.title,
       description: formData.description,
       name: formData.name,
-      subtitle: formData.subtitle,
+      subtitle: formData.subtitle ? formData.subtitle : "N/A",
       country: formData.country,
       content: formData.content,
       createdBy: userId,

@@ -12,7 +12,7 @@ export default function Gallery({ mediaFiles }) {
   });
   return (
     <div>
-      <div className="grid grid-cols-3 md:grid-cols-5 gap-4 w-max mb-4">
+      <div className="grid grid-cols-3 md:grid-cols-5 gap-4 w-max my-4">
         {mediaFiles.map((item, index) => {
           return (
             <div
